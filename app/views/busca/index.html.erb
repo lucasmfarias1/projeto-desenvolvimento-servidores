@@ -1,0 +1,15 @@
+<div class="busca">
+  <h2>Resultados da Busca por "<%= params[:query] %>"</h2>
+
+  <% @result.each do |item| %>
+    <div class="busca__item">
+      <h3><%= item.nome %></h3>
+      <% if item.is_a?(Banda) %>
+        <p><%= link_to 'Saiba Mais', banda_path(item) %></p>
+      <% elsif item.is_a?(Album) %>
+        <p><%= link_to 'Saiba Mais', album_path(item) %></p>
+      <% end %>
+    </div>
+  <% end %>
+
+</div>
