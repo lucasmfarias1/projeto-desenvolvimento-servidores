@@ -1,4 +1,4 @@
-<h1>Editing Album</h1>
+<h2>Editing Album <%= link_to @album.nome, album_path(@album) %></h2>
 
 <%= render 'form', album: @album %>
 
