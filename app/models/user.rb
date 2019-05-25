@@ -1,6 +1,6 @@
 class User < ApplicationRecord
-  has_many :banda_ratings
-  has_many :album_ratings
+  has_many :banda_ratings, dependent: :destroy
+  has_many :album_ratings, dependent: :destroy
   
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable

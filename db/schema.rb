@@ -28,6 +28,7 @@ ActiveRecord::Schema.define(version: 2019_05_25_211131) do
     t.integer "banda_id"
     t.string "image"
     t.integer "nota"
+    t.integer "pendente"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["banda_id"], name: "index_albums_on_banda_id"
@@ -50,6 +51,7 @@ ActiveRecord::Schema.define(version: 2019_05_25_211131) do
     t.string "pais"
     t.string "image"
     t.integer "nota"
+    t.integer "pendente"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end

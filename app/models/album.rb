@@ -1,6 +1,7 @@
 class Album < ApplicationRecord
   mount_uploader :image, ImageUploader
   belongs_to :banda
+  has_many :album_ratings, dependent: :destroy
 
   validates :nome, length: { in: 1..40 }
   validates :ano, numericality: { only_integer: true, greater_than: 1877, less_than: 2020 }

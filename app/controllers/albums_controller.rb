@@ -1,6 +1,7 @@
 class AlbumsController < ApplicationController
   before_action :set_album, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, only: [:edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:index, :new, :edit, :create, :update, :destroy]
+  before_action :admin_filter, only: [:index, :edit, :update, :destroy]
 
   # GET /albums
   # GET /albums.json
@@ -31,6 +32,8 @@ class AlbumsController < ApplicationController
   # POST /albums.json
   def create
     @album = Album.new(album_params)
+
+    @album.pendente = 1 unless current_user.is_admin?
 
     respond_to do |format|
       if @album.save
@@ -94,5 +97,11 @@ class AlbumsController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def album_params
       params.require(:album).permit(:nome, :ano, :banda_id, :image)
+    end
+
+    def admin_filter
+      unless current_user.is_admin?
+        return redirect_to root_path, alert: 'Esta ação demanda privilégios de Admin'
+      end
     end
 end

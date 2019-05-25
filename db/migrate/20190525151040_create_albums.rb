@@ -7,6 +7,7 @@ class CreateAlbums < ActiveRecord::Migration[5.2]
       t.string :image
 
       t.integer :nota
+      t.integer :pendente
 
       t.timestamps
     end

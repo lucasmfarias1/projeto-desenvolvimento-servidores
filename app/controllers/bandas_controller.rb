@@ -1,7 +1,7 @@
 class BandasController < ApplicationController
   before_action :set_banda, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, only: [:new, :edit, :create, :update, :destroy]
-  before_action :admin_filter, only: [:index, :new, :edit, :create, :update, :destroy]
+  before_action :authenticate_user!, only: [:index, :new, :edit, :create, :update, :destroy]
+  before_action :admin_filter, only: [:index, :edit, :update, :destroy]
 
   # GET /bandas
   # GET /bandas.json
@@ -31,6 +31,8 @@ class BandasController < ApplicationController
   # POST /bandas.json
   def create
     @banda = Banda.new(banda_params)
+
+    @banda.pendente = 1 unless current_user.is_admin?
 
     respond_to do |format|
       if @banda.save

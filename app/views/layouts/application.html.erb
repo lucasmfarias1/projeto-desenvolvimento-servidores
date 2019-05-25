@@ -24,6 +24,10 @@
           <li><%= link_to 'Cadastre-se', new_user_registration_path %></li>
           <li><%= link_to 'Login', new_user_session_path %></li>
         <% end %>
+
+        <% if current_user && current_user.is_admin? %>
+        <li><%= link_to 'Painel Admin', admin_path %></li>
+        <% end %>
       </ul>
     </nav>
 
