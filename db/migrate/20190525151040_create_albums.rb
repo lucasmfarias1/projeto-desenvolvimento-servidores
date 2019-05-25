@@ -6,6 +6,8 @@ class CreateAlbums < ActiveRecord::Migration[5.2]
       t.references :banda, foreign_key: true
       t.string :image
 
+      t.integer :nota
+
       t.timestamps
     end
   end

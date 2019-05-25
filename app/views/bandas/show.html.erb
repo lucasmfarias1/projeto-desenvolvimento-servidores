@@ -7,7 +7,7 @@
 
   <% if user_signed_in? %>
     <div class="banda-show__nota">
-      <%= form_tag rate_path do %>
+      <%= form_tag rate_banda_path do %>
         <%= hidden_field_tag :banda_id, @banda.id %>
         <%= number_field_tag :nota, @nota_atual || 5, min: 1, max: 5 %>
         <%= submit_tag 'Dar nota' %>

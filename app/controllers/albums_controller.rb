@@ -11,6 +11,10 @@ class AlbumsController < ApplicationController
   # GET /albums/1
   # GET /albums/1.json
   def show
+    if current_user
+      rating_atual = AlbumRating.find_by(user: current_user, album: @album)
+      @nota_atual = rating_atual.nota if rating_atual
+    end
   end
 
   # GET /albums/new
@@ -61,6 +65,24 @@ class AlbumsController < ApplicationController
       format.html { redirect_to albums_url, notice: 'Album was successfully destroyed.' }
       format.json { head :no_content }
     end
+  end
+
+  def rate
+    nota = params[:nota]
+    album = Album.find(params[:album_id])
+
+    @rating = AlbumRating.find_by(user: current_user, album: album)
+
+    if @rating
+      @rating.nota = nota
+      @rating.save
+    else
+      current_user.album_ratings.create(album: album, nota: nota)
+    end
+
+    album.calc_nota
+
+    redirect_to album_path(album), notice: "Você deu nota #{nota} para #{album.nome}"
   end
 
   private

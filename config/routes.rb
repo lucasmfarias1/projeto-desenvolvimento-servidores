@@ -3,7 +3,8 @@ Rails.application.routes.draw do
 
   get 'explorar', to: 'home#explorar'
 
-  post 'rate', to: 'bandas#rate'
+  post 'rate_banda', to: 'bandas#rate'
+  post 'rate_album', to: 'albums#rate'
 
   devise_for :users
   resources :albums

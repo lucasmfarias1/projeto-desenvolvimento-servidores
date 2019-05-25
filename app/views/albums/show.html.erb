@@ -1,22 +1,37 @@
-<p id="notice"><%= notice %></p>
+<hr>
 
-<div>
-  <%= image_tag @album.image.url %>
+<div class="album-show">
+
+  <h2><%= @album.nome %></h2>
+
+  <h3><%= @album.nota %>/5</h3>
+
+  <% if user_signed_in? %>
+    <div class="album-show__nota">
+      <%= form_tag rate_album_path do %>
+        <%= hidden_field_tag :album_id, @album.id %>
+        <%= number_field_tag :nota, @nota_atual || 5, min: 1, max: 5 %>
+        <%= submit_tag 'Dar nota' %>
+      <% end %>
+    </div>
+  <% end %>
+
+  <div>
+    <%= image_tag @album.image.url %>
+  </div>
+
+  <p>
+    <strong>Ano:</strong>
+    <%= @album.ano %>
+  </p>
+
+  <p>
+    <strong>Banda:</strong>
+    <%= link_to @album.banda.nome, banda_path(@album.banda) %>
+  </p>
+
 </div>
 
-<p>
-  <strong>Nome:</strong>
-  <%= @album.nome %>
-</p>
-
-<p>
-  <strong>Ano:</strong>
-  <%= @album.ano %>
-</p>
-
-<p>
-  <strong>Banda:</strong>
-  <%= link_to @album.banda.nome, banda_path(@album.banda) %>
-</p>
-
-<%= link_to 'Edit', edit_album_path(@album) %>
+<% if current_user && current_user.is_admin? %>
+  <%= link_to 'Edit', edit_album_path(@album) %>
+<% end %>
