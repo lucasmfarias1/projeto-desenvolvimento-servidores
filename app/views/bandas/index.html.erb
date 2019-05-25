@@ -1,0 +1,33 @@
+<p id="notice"><%= notice %></p>
+
+<h1>Bandas</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Nome</th>
+      <th>Ano</th>
+      <th>Genero</th>
+      <th>Pais</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @bandas.each do |banda| %>
+      <tr>
+        <td><%= banda.nome %></td>
+        <td><%= banda.ano %></td>
+        <td><%= banda.genero %></td>
+        <td><%= banda.pais %></td>
+        <td><%= link_to 'Show', banda %></td>
+        <td><%= link_to 'Edit', edit_banda_path(banda) %></td>
+        <td><%= link_to 'Destroy', banda, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Banda', new_banda_path %>

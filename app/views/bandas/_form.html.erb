@@ -1,0 +1,37 @@
+<%= form_with(model: banda, local: true) do |form| %>
+  <% if banda.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(banda.errors.count, "error") %> prohibited this banda from being saved:</h2>
+
+      <ul>
+      <% banda.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :nome %>
+    <%= form.text_field :nome %>
+  </div>
+
+  <div class="field">
+    <%= form.label :ano %>
+    <%= form.text_field :ano %>
+  </div>
+
+  <div class="field">
+    <%= form.label :genero %>
+    <%= form.text_field :genero %>
+  </div>
+
+  <div class="field">
+    <%= form.label :pais %>
+    <%= form.text_field :pais %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
