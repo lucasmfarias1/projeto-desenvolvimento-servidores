@@ -23,7 +23,12 @@
 
   <div class="field">
     <%= form.label :banda_id %>
-    <%= form.hidden_field :banda_id, value: params[:banda_id] %>
+    <%= form.hidden_field :banda_id, value: params[:banda_id] || album.banda.id %>
+  </div>
+
+  <div class="field">
+    <%= form.label :image %>
+    <%= form.file_field :image %>
   </div>
 
   <div class="actions">

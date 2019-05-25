@@ -71,7 +71,7 @@ class BandasController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def banda_params
-      params.require(:banda).permit(:nome, :ano, :genero, :pais)
+      params.require(:banda).permit(:nome, :ano, :genero, :pais, :image)
     end
 
     def admin_filter
