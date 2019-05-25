@@ -23,7 +23,7 @@
 
   <div class="field">
     <%= form.label :banda_id %>
-    <%= form.text_field :banda_id %>
+    <%= form.hidden_field :banda_id, value: params[:banda_id] %>
   </div>
 
   <div class="actions">
