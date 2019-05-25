@@ -30,3 +30,7 @@
 # Ignore master key for decrypting credentials and more.
 /config/master.key
 /config/application.yml
+
+/public/uploads/album/*
+/public/uploads/banda/*
+/public/uploads/tmp/*
