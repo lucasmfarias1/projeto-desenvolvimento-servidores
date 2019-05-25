@@ -1,4 +1,5 @@
 class Banda < ApplicationRecord
+  mount_uploader :image, ImageUploader
   has_many :albums, dependent: :destroy
 
   validates :nome, length: { in: 1..40 }

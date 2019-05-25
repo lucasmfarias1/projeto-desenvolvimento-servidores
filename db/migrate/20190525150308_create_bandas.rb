@@ -5,6 +5,7 @@ class CreateBandas < ActiveRecord::Migration[5.2]
       t.integer :ano
       t.string :genero
       t.string :pais
+      t.string :image
 
       t.timestamps
     end
