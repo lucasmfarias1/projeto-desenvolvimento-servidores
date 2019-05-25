@@ -1,40 +1,61 @@
 <hr>
+<div class="banda-show">
 
-<h2><%= @banda.nome %></h2>
+  <h2><%= @banda.nome %></h2>
 
-<div>
-  <%= image_tag @banda.image.url %>
-</div>
+  <h3><%= @banda.nota %>/5</h3>
 
-<p id="notice"><%= notice %></p>
+  <% if user_signed_in? %>
+    <div class="banda-show__nota">
+      <%= form_tag rate_path do %>
+        <%= hidden_field_tag :banda_id, @banda.id %>
+        <%= number_field_tag :nota, @nota_atual || 5, min: 1, max: 5 %>
+        <%= submit_tag 'Dar nota' %>
+      <% end %>
+    </div>
+  <% end %>
 
-<p>
-  <strong>Ano de formação:</strong>
-  <%= @banda.ano %>
-</p>
+  <br>
 
-<p>
-  <strong>Gênero:</strong>
-  <%= @banda.genero %>
-</p>
+  <div class="banda-show__image">
+    <%= image_tag @banda.image.url %>
+  </div>
 
-<p>
-  <strong>País:</strong>
-  <%= @banda.pais %>
-</p>
+  <p>
+    <strong>Ano de formação:</strong>
+    <%= @banda.ano %>
+  </p>
 
-<div class="banda__albuns">
-  <h3>Álbuns</h3>
-  <ul>
-    <% @banda.albums.each do |album| %>
-      <li>
-        <%= link_to album.nome, album_path(album) %>
-      </li>
+  <p>
+    <strong>Gênero:</strong>
+    <%= @banda.genero %>
+  </p>
+
+  <p>
+    <strong>País:</strong>
+    <%= @banda.pais %>
+  </p>
+
+  <div class="banda__albuns">
+    <h3>Álbuns</h3>
+    <ul>
+      <% @banda.albums.each do |album| %>
+        <li>
+          <%= link_to album.nome, album_path(album) %>
+        </li>
+      <% end %>
+    </ul>
+
+    <% if user_signed_in? %>
+      <%= link_to '+ Album', new_album_path(banda_id: @banda.id) %>
     <% end %>
-  </ul>
-  <%= link_to '+ Album', new_album_path(banda_id: @banda.id) %>
+
+  </div>
+
 </div>
 
 <hr>
 
-<%= link_to 'Edit', edit_banda_path(@banda) %>
+<% if current_user && current_user.is_admin? %>
+  <%= link_to 'Edit', edit_banda_path(@banda) %>
+<% end %>

@@ -3,6 +3,15 @@
 <p>Avalie seus discos favoritos, compartilhe com seus amigos e descubra novos discos e bandas!</p>
 
 <% if user_signed_in? %>
+  <div class="top-bandas">
+    <h3>Top Bandas</h3>
+    <% @bandas.each do |banda| %>
+      <div>
+        <h4><%= link_to banda.nome, banda_path(banda) %> <%= banda.nota %>/5</h4>
+        <%= image_tag banda.image.url %>
+      </div>
+    <% end %>
+  </div>
 <% else %>
   <div>
     <%= link_to 'Cadastre-se', new_user_registration_path %>

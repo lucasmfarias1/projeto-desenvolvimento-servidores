@@ -10,16 +10,37 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_05_25_152201) do
+ActiveRecord::Schema.define(version: 2019_05_25_211131) do
+
+  create_table "album_ratings", force: :cascade do |t|
+    t.integer "nota"
+    t.integer "user_id"
+    t.integer "album_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["album_id"], name: "index_album_ratings_on_album_id"
+    t.index ["user_id"], name: "index_album_ratings_on_user_id"
+  end
 
   create_table "albums", force: :cascade do |t|
     t.string "nome"
     t.integer "ano"
     t.integer "banda_id"
     t.string "image"
+    t.integer "nota"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["banda_id"], name: "index_albums_on_banda_id"
+  end
+
+  create_table "banda_ratings", force: :cascade do |t|
+    t.integer "nota"
+    t.integer "banda_id"
+    t.integer "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["banda_id"], name: "index_banda_ratings_on_banda_id"
+    t.index ["user_id"], name: "index_banda_ratings_on_user_id"
   end
 
   create_table "bandas", force: :cascade do |t|
@@ -28,6 +49,7 @@ ActiveRecord::Schema.define(version: 2019_05_25_152201) do
     t.string "genero"
     t.string "pais"
     t.string "image"
+    t.integer "nota"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
