@@ -20,5 +20,16 @@
   <%= @banda.pais %>
 </p>
 
+<div class="banda__albuns">
+  <%= link_to '+ Album', new_album_path(banda_id: @banda.id) %>
+  <ul>
+    <% @banda.albums.each do |album| %>
+      <li>
+        <%= link_to album.nome, album_path(album) %>
+      </li>
+    <% end %>
+  </ul>
+</div>
+
 <%= link_to 'Edit', edit_banda_path(@banda) %> |
 <%= link_to 'Back', bandas_path %>

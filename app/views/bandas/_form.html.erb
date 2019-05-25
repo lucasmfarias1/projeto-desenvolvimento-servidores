@@ -1,3 +1,5 @@
+<% generos = ['Hardcore', 'Progressivo', 'Punk', 'Heavy Metal'] %>
+
 <%= form_with(model: banda, local: true) do |form| %>
   <% if banda.errors.any? %>
     <div id="error_explanation">
@@ -13,22 +15,22 @@
 
   <div class="field">
     <%= form.label :nome %>
-    <%= form.text_field :nome %>
+    <%= form.text_field :nome, autocomplete: 'off' %>
   </div>
 
   <div class="field">
     <%= form.label :ano %>
-    <%= form.text_field :ano %>
+    <%= form.text_field :ano, autocomplete: 'off' %>
   </div>
 
   <div class="field">
-    <%= form.label :genero %>
-    <%= form.text_field :genero %>
+    <%= form.label :genero, 'Gênero' %>
+    <%= form.select :genero, generos %>
   </div>
 
   <div class="field">
-    <%= form.label :pais %>
-    <%= form.text_field :pais %>
+    <%= form.label :pais, 'País' %>
+    <%= form.text_field :pais, autocomplete: 'off' %>
   </div>
 
   <div class="actions">

@@ -12,6 +12,7 @@
   </head>
 
   <body>
+
     <nav>
       <ul>
         <li><%= link_to 'Home', root_path %></li>
@@ -24,6 +25,12 @@
         <% end %>
       </ul>
     </nav>
+
+    <div class="barra-de-busca">
+      <%= form_tag buscar_path, method: 'GET' do  %>
+        <%= text_field_tag :query, nil, placeholder: 'Busque bandas e discos', autocomplete: 'off' %>
+      <% end %>
+    </div>
 
     <div class="alert-box">
       <p class="notice"><%= notice %></p>
