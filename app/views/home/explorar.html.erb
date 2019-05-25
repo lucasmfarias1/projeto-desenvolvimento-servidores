@@ -1,0 +1,19 @@
+<div class="explorar">
+  <h2>Explorar</h2>
+
+  <div class="explorar__bandas">
+    <h3>Bandas</h3>
+    <% @bandas.each do |banda| %>
+      <h3><%= link_to "#{banda.nome} - (#{banda.genero})", banda_path(banda) %></h3>
+    <% end %>
+  </div>
+
+  <hr>
+
+  <div class="explorar__bandas">
+    <h3>Álbuns</h3>
+    <% @albums.each do |album| %>
+      <h3><%= link_to "#{album.nome} - (#{album.banda.nome})", album_path(album) %></h3>
+    <% end %>
+  </div>
+</div>

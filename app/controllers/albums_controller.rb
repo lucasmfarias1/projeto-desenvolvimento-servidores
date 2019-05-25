@@ -14,6 +14,7 @@ class AlbumsController < ApplicationController
 
   # GET /albums/new
   def new
+    @banda = Banda.find(params[:banda_id])
     @album = Album.new
   end
 

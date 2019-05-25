@@ -1,27 +1,26 @@
+<hr>
+
+<h2><%= @banda.nome %></h2>
+
 <p id="notice"><%= notice %></p>
 
 <p>
-  <strong>Nome:</strong>
-  <%= @banda.nome %>
-</p>
-
-<p>
-  <strong>Ano:</strong>
+  <strong>Ano de formação:</strong>
   <%= @banda.ano %>
 </p>
 
 <p>
-  <strong>Genero:</strong>
+  <strong>Gênero:</strong>
   <%= @banda.genero %>
 </p>
 
 <p>
-  <strong>Pais:</strong>
+  <strong>País:</strong>
   <%= @banda.pais %>
 </p>
 
 <div class="banda__albuns">
-  <%= link_to '+ Album', new_album_path(banda_id: @banda.id) %>
+  <h3>Álbuns</h3>
   <ul>
     <% @banda.albums.each do |album| %>
       <li>
@@ -29,7 +28,10 @@
       </li>
     <% end %>
   </ul>
+  <%= link_to '+ Album', new_album_path(banda_id: @banda.id) %>
 </div>
+
+<hr>
 
 <%= link_to 'Edit', edit_banda_path(@banda) %> |
 <%= link_to 'Back', bandas_path %>
