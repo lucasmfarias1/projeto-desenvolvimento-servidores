@@ -1,5 +1,7 @@
 class BandasController < ApplicationController
   before_action :set_banda, only: [:show, :edit, :update, :destroy]
+  before_action :authenticate_user!, only: [:new, :edit, :create, :update, :destroy]
+  before_action :admin_filter, only: [:index, :new, :edit, :create, :update, :destroy]
 
   # GET /bandas
   # GET /bandas.json
@@ -70,5 +72,11 @@ class BandasController < ApplicationController
     # Never trust parameters from the scary internet, only allow the white list through.
     def banda_params
       params.require(:banda).permit(:nome, :ano, :genero, :pais)
+    end
+
+    def admin_filter
+      unless current_user.is_admin?
+        return redirect_to root_path, alert: 'Esta ação demanda privilégios de Admin'
+      end
     end
 end
