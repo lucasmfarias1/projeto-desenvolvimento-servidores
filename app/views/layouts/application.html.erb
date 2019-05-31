@@ -13,8 +13,13 @@
 
   <body>
 
-    <nav>
+    <nav class="menu">
       <h1 class="logo">Vinyl</h1>
+      <div class="barra-de-busca">
+        <%= form_tag buscar_path, method: 'GET' do  %>
+          <%= text_field_tag :query, nil, placeholder: 'Busque bandas e discos', autocomplete: 'off' %>
+        <% end %>
+      </div>
       <ul>
         <li><%= link_to 'Home', root_path %></li>
         <li><%= link_to 'Explorar', explorar_path %></li>
@@ -32,11 +37,7 @@
       </ul>
     </nav>
 
-    <div class="barra-de-busca">
-      <%= form_tag buscar_path, method: 'GET' do  %>
-        <%= text_field_tag :query, nil, placeholder: 'Busque bandas e discos', autocomplete: 'off' %>
-      <% end %>
-    </div>
+    
 
     <div class="alert-box">
       <p class="notice"><%= notice %></p>
