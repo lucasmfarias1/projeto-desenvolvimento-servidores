@@ -2,7 +2,40 @@
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
+body {
+  background-color: #4286f4;
+}
+
+.home-container {
+  padding: 5%;
+}
+
+.home-container h1 {
+  font-size: 48px;
+}
+
+.home-container h2 {
+  font-size: 36px;
+}
+
 .topsters {
   display: flex;
   justify-content: space-around;
+}
+
+.botoes {
+  margin-top: 10%;
+}
+
+.botoes a {
+  background-color: #4C4C47;
+  color: white;
+  margin-right: 5%;
+  text-decoration: none;
+  border-radius: 5px;
+  padding: 15px 32px;
+}
+
+.botoes a:hover {
+  background-color: #3a3a3a;
 }

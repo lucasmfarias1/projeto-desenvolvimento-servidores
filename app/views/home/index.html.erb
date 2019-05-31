@@ -1,32 +1,34 @@
-<h1>Vinyl</h1>
-<h2>Sua estante de rock online</h2>
-<p>Avalie seus discos favoritos, compartilhe com seus amigos e descubra novos discos e bandas!</p>
-
-<% if user_signed_in? %>
-  <div class="topsters">
-    <div class="top-bandas">
-      <h3>Top Bandas</h3>
-      <% @bandas.each do |banda| %>
-        <div>
-          <h4><%= link_to banda.nome, banda_path(banda) %> <%= banda.nota %>/5</h4>
-          <%= image_tag banda.image.url %>
-        </div>
-      <% end %>
+<div class="home-container">
+  <h1>Vinyl</h1>
+  <h2>Sua estante de rock online</h2>
+  <p>Avalie seus discos favoritos, compartilhe com seus amigos e descubra novos discos e bandas!</p>
+  
+  <% if user_signed_in? %>
+    <div class="topsters">
+      <div class="top-bandas">
+        <h3>Top Bandas</h3>
+        <% @bandas.each do |banda| %>
+          <div>
+            <h4><%= link_to banda.nome, banda_path(banda) %> <%= banda.nota %>/5</h4>
+            <%= image_tag banda.image.url %>
+          </div>
+        <% end %>
+      </div>
+  
+      <div class="top-bandas">
+        <h3>Top Álbuns</h3>
+        <% @albums.each do |album| %>
+          <div>
+            <h4><%= link_to "#{album.nome} - #{album.banda.nome}", album_path(album) %> <%= album.nota %>/5</h4>
+            <%= image_tag album.image.url %>
+          </div>
+        <% end %>
+      </div>
     </div>
-
-    <div class="top-bandas">
-      <h3>Top Álbuns</h3>
-      <% @albums.each do |album| %>
-        <div>
-          <h4><%= link_to "#{album.nome} - #{album.banda.nome}", album_path(album) %> <%= album.nota %>/5</h4>
-          <%= image_tag album.image.url %>
-        </div>
-      <% end %>
+  <% else %>
+    <div class="botoes">
+      <%= link_to 'Cadastre-se', new_user_registration_path %>
+      <%= link_to 'Login', new_user_session_path %>
     </div>
-  </div>
-<% else %>
-  <div>
-    <%= link_to 'Cadastre-se', new_user_registration_path %>
-    <%= link_to 'Login', new_user_session_path %>
-  </div>
-<% end %>
+  <% end %>
+</div>
