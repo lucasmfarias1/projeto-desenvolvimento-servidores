@@ -8,7 +8,7 @@
       <div class="top-bandas">
         <h3>Top Bandas</h3>
         <% @bandas.each do |banda| %>
-          <div>
+          <div class="item-topbandas">
             <h4><%= link_to banda.nome, banda_path(banda) %> <%= banda.nota %>/5</h4>
             <%= image_tag banda.image.url %>
           </div>
@@ -18,7 +18,7 @@
       <div class="top-bandas">
         <h3>Top Álbuns</h3>
         <% @albums.each do |album| %>
-          <div>
+          <div class="item-topbandas">
             <h4><%= link_to "#{album.nome} - #{album.banda.nome}", album_path(album) %> <%= album.nota %>/5</h4>
             <%= image_tag album.image.url %>
           </div>
