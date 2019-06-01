@@ -1,3 +1,39 @@
 // Place all the styles related to the busca controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+
+.itens_busca {
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  position: absolute;
+  left: 10%;
+}
+
+.itens_busca h2 {
+  align-self: center;
+}
+
+.busca{
+    background-color:#4C4C47;
+    color:white;
+}
+
+.busca__item{
+    background-color:#fff;
+    color:black;
+}
+
+div.busca__item>h3{
+    margin-left:10px;
+}
+
+div.busca__item>p>a{
+    color:black;
+    margin-left:10px;
+    &:hover {
+    color: black;
+    background-color: #fff;
+  }
+}
