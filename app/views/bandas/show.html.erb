@@ -47,7 +47,7 @@
     </ul>
 
     <% if user_signed_in? %>
-      <%= link_to '+ Album', new_album_path(banda_id: @banda.id) %>
+      <%= link_to '+ Album', new_banda_album_path(banda_id: @banda.id) %>
     <% end %>
 
   </div>

@@ -1,7 +1,10 @@
+# frozen_string_literal: true
+
 class AlbumsController < ApplicationController
-  before_action :set_album, only: [:show, :edit, :update, :destroy]
-  before_action :authenticate_user!, only: [:index, :new, :edit, :create, :update, :destroy]
-  before_action :admin_filter, only: [:index, :edit, :update, :destroy]
+  before_action :set_album, only: %i[show edit update destroy]
+  before_action :authenticate_user!, only: %i[index new edit create update destroy]
+  before_action :admin_filter, only: %i[index edit update destroy]
+  before_action :set_banda, only: %i[new create]
 
   # GET /albums
   # GET /albums.json
@@ -25,8 +28,7 @@ class AlbumsController < ApplicationController
   end
 
   # GET /albums/1/edit
-  def edit
-  end
+  def edit; end
 
   # POST /albums
   # POST /albums.json
@@ -89,19 +91,24 @@ class AlbumsController < ApplicationController
   end
 
   private
-    # Use callbacks to share common setup or constraints between actions.
-    def set_album
-      @album = Album.find(params[:id])
-    end
 
-    # Never trust parameters from the scary internet, only allow the white list through.
-    def album_params
-      params.require(:album).permit(:nome, :ano, :banda_id, :image)
-    end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_album
+    @album = Album.find(params[:id])
+  end
 
-    def admin_filter
-      unless current_user.is_admin?
-        return redirect_to root_path, alert: 'Esta ação demanda privilégios de Admin'
-      end
+  # Never trust parameters from the scary internet, only allow the white list through.
+  def album_params
+    params.require(:album).permit(:nome, :ano, :banda_id, :image)
+  end
+
+  def admin_filter
+    unless current_user.is_admin?
+      redirect_to root_path, alert: 'Esta ação demanda privilégios de Admin'
     end
+  end
+
+  def set_banda
+    @banda = Banda.find(params[:banda_id])
+  end
 end

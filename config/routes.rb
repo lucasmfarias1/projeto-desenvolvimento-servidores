@@ -16,8 +16,12 @@ Rails.application.routes.draw do
   get 'reprova_album/:id', to: 'admin#reprova_album'
 
   devise_for :users
-  resources :albums
-  resources :bandas
+  
+  resources :bandas do
+    resources :albums, shallow: true
+  end
+
+  get 'albums', to: 'albums#index'
 
   root to: 'home#index'
 end
