@@ -1,3 +1,6 @@
-<h2>New Album - <%= @banda.nome %></h2>
-
-<%= render 'form', album: @album %>
+<div class= "cadastro_container">
+    <h2>Novo Álbum - <%= @banda.nome %></h2>
+    <div class="centro">
+        <%= render 'form', album: @album %>
+    </div>
+</div>

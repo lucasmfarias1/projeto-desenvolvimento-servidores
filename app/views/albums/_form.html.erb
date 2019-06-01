@@ -11,27 +11,27 @@
     </div>
   <% end %>
 
-  <div class="field">
+  <div class="field f-style">
     <%= form.label :nome %>
     <%= form.text_field :nome %>
   </div>
 
-  <div class="field">
+  <div class="field f-style">
     <%= form.label :ano %>
     <%= form.number_field :ano %>
   </div>
 
-  <div class="field">
+  <div class="field f-style">
     <%= form.label :banda_id %>
     <%= form.hidden_field :banda_id, value: params[:banda_id] || album.banda.id %>
   </div>
 
-  <div class="field">
-    <%= form.label :image %>
-    <%= form.file_field :image %>
+  <div class="field" >
+    <%= form.label :image, "Seleciona uma imagem" %>
+    <%= form.file_field :image%>
   </div>
 
   <div class="actions">
-    <%= form.submit %>
+    <%= form.submit "Confirmar" %>
   </div>
 <% end %>
