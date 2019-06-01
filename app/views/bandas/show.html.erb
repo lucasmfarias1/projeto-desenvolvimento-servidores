@@ -1,9 +1,8 @@
-<hr>
 <div class="banda-show">
 
-  <h2><%= @banda.nome %></h2>
+  <h2>Nome da Banda: <%= @banda.nome %></h2>
 
-  <h3><%= @banda.nota %>/5</h3>
+  <h3>Nota atual: <%= @banda.nota %>/5</h3>
 
   <% if user_signed_in? %>
     <div class="banda-show__nota">
@@ -53,8 +52,6 @@
   </div>
 
 </div>
-
-<hr>
 
 <% if current_user && current_user.is_admin? %>
   <%= link_to 'Edit', edit_banda_path(@banda) %>
