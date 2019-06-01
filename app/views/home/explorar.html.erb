@@ -4,7 +4,7 @@
   <div class="explorar__bandas subtitulo">
     <h3>Bandas</h3>
     <% @bandas.each do |banda| %>
-      <h3><%= link_to "#{banda.nome} - (#{banda.genero})", banda_path(banda) %></h3>
+      <h3 class="backcolorwhite"><%= link_to "#{banda.nome} - (#{banda.genero})", banda_path(banda) %></h3>
     <% end %>
   </div>
 
