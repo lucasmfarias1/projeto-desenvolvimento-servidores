@@ -152,6 +152,7 @@ ul li{
     padding-left: 2.5%;
     margin-top: 5px;
     margin-bottom: 10px;
+    
 }
 
 input[type=submit]{
@@ -172,4 +173,8 @@ input[type=submit]:hover {
 
 input[type=checkbox]{
   float:left;
+}
+
+input[type=file]{
+  margin-top:5px;
 }
