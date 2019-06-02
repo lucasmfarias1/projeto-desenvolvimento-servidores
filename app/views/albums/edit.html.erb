@@ -1,5 +1,6 @@
-<h2>Editing Album <%= link_to @album.nome, album_path(@album) %></h2>
+<div class= "cadastro_container"><h2>Editar Álbum: <%= link_to @album.nome, album_path(@album) %></h2>
 
 <%= render 'form', album: @album %>
 
-<%= link_to 'Show', @album %>
+<!-- <%= link_to 'Show', @album %> -->
+</div>

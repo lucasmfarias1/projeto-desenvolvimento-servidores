@@ -1,37 +1,38 @@
-<%= form_with(model: album, url: [@banda, album], local: true) do |form| %>
-  <% if album.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(album.errors.count, "error") %> prohibited this album from being saved:</h2>
-
-      <ul>
-      <% album.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-      </ul>
+<div class= "centro">
+  <%= form_with(model: album, url: [@banda, album], local: true) do |form| %>
+    <% if album.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(album.errors.count, "error") %> prohibited this album from being saved:</h2>
+  
+        <ul>
+        <% album.errors.full_messages.each do |message| %>
+          <li><%= message %></li>
+        <% end %>
+        </ul>
+      </div>
+    <% end %>
+      <div class="field f-style">
+        <%= form.label :nome %>
+        <%= form.text_field :nome %>
+      </div>
+    
+      <div class="field f-style">
+        <%= form.label :ano %>
+        <%= form.number_field :ano %>
+      </div>
+    
+      <div class="field f-style invi">
+        <%= form.label :banda_id %>
+        <%= form.hidden_field :banda_id, value: params[:banda_id] || album.banda.id %>
+      </div>
+    
+      <div class="field" >
+        <%= form.label :image, "Seleciona uma imagem" %>
+        <%= form.file_field :image%>
+      </div>
+    
+      <div class="actions">
+        <%= form.submit "Confirmar" %>
     </div>
   <% end %>
-
-  <div class="field f-style">
-    <%= form.label :nome %>
-    <%= form.text_field :nome %>
-  </div>
-
-  <div class="field f-style">
-    <%= form.label :ano %>
-    <%= form.number_field :ano %>
-  </div>
-
-  <div class="field f-style invi">
-    <%= form.label :banda_id %>
-    <%= form.hidden_field :banda_id, value: params[:banda_id] || album.banda.id %>
-  </div>
-
-  <div class="field" >
-    <%= form.label :image, "Seleciona uma imagem" %>
-    <%= form.file_field :image%>
-  </div>
-
-  <div class="actions">
-    <%= form.submit "Confirmar" %>
-  </div>
-<% end %>
+</div>
