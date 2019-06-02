@@ -44,7 +44,7 @@
     </ul>
 
     <% if user_signed_in? %>
-      <%= link_to '+ Album', new_banda_album_path(banda_id: @banda.id) %>
+      <%= link_to '+ Album', new_banda_album_path(@banda) %>
     <% end %>
 
   </div>
@@ -53,4 +53,5 @@
 
 <% if current_user && current_user.is_admin? %>
   <%= link_to 'Edit', edit_banda_path(@banda) %>
+  <%= link_to 'Delete', banda_path(@banda), method: :delete, data: {confirm: 'Tem certeza?'} %>
 <% end %>

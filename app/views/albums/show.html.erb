@@ -32,4 +32,5 @@
 
 <% if current_user && current_user.is_admin? %>
   <%= link_to 'Edit', edit_album_path(@album) %>
+  <%= link_to 'Delete', album_path(@album), method: :delete, data: {confirm: 'Tem certeza?'} %>
 <% end %>
