@@ -1,8 +1,10 @@
 <div class="album-show">
+  <div>
+    <%= image_tag @album.image.url %>
+  </div>
+  <h2><%= @album.nome %></h2>
 
-  <h2>Nome do Álbum:<%= @album.nome %></h2>
-
-  <h3>Nota atual:<%= @album.nota %>/5</h3>
+  <h3>Nota atual: <%= @album.nota %>/5</h3>
 
   <% if user_signed_in? %>
     <div class="album-show__nota">
@@ -14,9 +16,7 @@
     </div>
   <% end %>
 
-  <div>
-    <%= image_tag @album.image.url %>
-  </div>
+  
 
   <p>
     <strong>Ano:</strong>

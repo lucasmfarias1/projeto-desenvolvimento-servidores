@@ -1,6 +1,8 @@
 <div class="banda-show">
-
-  <h2>Nome da Banda: <%= @banda.nome %></h2>
+  <div class="banda-show__image">
+    <%= image_tag @banda.image.url %>
+  </div>
+  <h2><%= @banda.nome %></h2>
 
   <h3>Nota atual: <%= @banda.nota %>/5</h3>
 
@@ -15,10 +17,6 @@
   <% end %>
 
   <br>
-
-  <div class="banda-show__image">
-    <%= image_tag @banda.image.url %>
-  </div>
 
   <p>
     <strong>Ano de formação:</strong>
