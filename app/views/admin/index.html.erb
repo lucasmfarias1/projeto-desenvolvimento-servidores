@@ -1,28 +1,32 @@
 <h2>Requisições</h2>
 
-<div class="banda-requests">
-  <% @banda_requests.each do |req| %>
-    <div>
-      <p><%= req.nome %></p>
-      <p><%= req.ano %></p>
-      <p><%= req.genero %></p>
-      <p><%= req.pais %></p>
-      <p><%= image_tag req.image.url %></p>
-      <%= link_to 'Aprovar', "aprova_banda/#{req.id}" %>
-      <%= link_to 'Reprovar', "reprova_banda/#{req.id}" %>
-    </div>
-  <% end %>
-</div>
+<div class="requests-page">
+  <div class="banda-requests">
+    <h3>Bandas</h3>
+    <% @banda_requests.each do |req| %>
+      <div>
+        <p>Nome: <%= req.nome %></p>
+        <p>Ano: <%= req.ano %></p>
+        <p>Gênero: <%= req.genero %></p>
+        <p>País: <%= req.pais %></p>
+        <p><%= image_tag req.image.url %></p>
+        <%= link_to 'Aprovar', "aprova_banda/#{req.id}" %> |
+        <%= link_to 'Reprovar', "reprova_banda/#{req.id}" %>
+      </div>
+    <% end %>
+  </div>
 
-<div class="album-requests">
-  <% @album_requests.each do |req| %>
-    <div>
-      <p><%= req.nome %></p>
-      <p><%= req.ano %></p>
-      <p><%= req.banda.nome %></p>
-      <p><%= image_tag req.image.url %></p>
-      <%= link_to 'Aprovar', "aprova_album/#{req.id}" %>
-      <%= link_to 'Reprovar', "reprova_album/#{req.id}" %>
-    </div>
-  <% end %>
+  <div class="album-requests">
+    <h3>Álbuns</h3>
+    <% @album_requests.each do |req| %>
+      <div>
+        <p>Nome: <%= req.nome %></p>
+        <p>Ano: <%= req.ano %></p>
+        <p>Banda: <%= req.banda.nome %></p>
+        <p><%= image_tag req.image.url %></p>
+        <%= link_to 'Aprovar', "aprova_album/#{req.id}" %> |
+        <%= link_to 'Reprovar', "reprova_album/#{req.id}" %>
+      </div>
+    <% end %>
+  </div>
 </div>
