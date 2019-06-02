@@ -1,3 +1,14 @@
 // Place all the styles related to the admin controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.requests-page {
+  display: flex;
+  justify-content: space-around;
+}
+
+.banda-requests > div, .album-requests > div {
+  border: 2px solid #fff;
+  padding: 5px 15px;
+  margin: 10px;
+}
